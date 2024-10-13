@@ -1,0 +1,59 @@
+@import '../../../styles/size';
+
+.Cost {
+    display: flex;
+    gap: 10px;
+    flex-wrap: nowrap;
+    padding: 3px;
+    justify-content: end;
+    align-content: space-around;
+    align-items: center;
+    justify-items: stretch;
+    flex-direction: row;
+  }
+  
+  .OldCost {
+    padding: 0px;
+    text-decoration-line: line-through;
+    color: #a6a6a6;
+    font-size: $title-size-p;
+  }
+  .NewCost {
+    padding: 0px;
+    font-weight: 600;
+    font-size: $title-size-h4;
+  }
+
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .tooltiptext {
+    visibility: hidden;
+    width: max-content;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+  
+    /* Позиціювання підказки */
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Відступ зверху */
+    left: 50%;
+    margin-left: -60px; /* Центрування */
+    
+    /* Додаткові стилі для плавного з'явлення */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  /* Стилі для відображення підказки при наведенні */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+  

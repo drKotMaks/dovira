@@ -1,0 +1,14 @@
+@import '../../styles/media';
+@import '../../styles/spacing';
+@import '../../styles/color';
+@import '../../styles/size';
+@import '../../styles/template';
+
+.root {
+  max-width: $media-desktop;
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  padding: 8px;
+}
+

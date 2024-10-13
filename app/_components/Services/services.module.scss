@@ -1,0 +1,28 @@
+@import '../../styles/media';
+@import '../../styles/spacing';
+@import '../../styles/color';
+@import '../../styles/size';
+@import '../../styles/template';
+
+
+
+.ServicesList {
+  display: grid;
+  flex-wrap: wrap;
+  flex-direction: row;
+  overflow: visible;
+  grid-auto-flow: row;
+  justify-items: stretch;
+  @media only screen and (min-width: #{$media-mobile}) {
+    grid-template-columns: $grid-template-columns-2;
+  }
+  @media only screen and (min-width: #{$media-tablet}) {
+    grid-template-columns: $grid-template-columns-3;
+    width: 100%;
+  }
+  gap: 8px;
+  padding: 8px;
+  margin: auto;
+  max-width: $media-desktop;
+  width: 100%;
+}

@@ -1,0 +1,25 @@
+@import '../../styles/media';
+@import '../../styles/spacing';
+@import '../../styles/color';
+@import '../../styles/size';
+@import '../../styles/template';
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $gap-8;
+  padding: $padding-main;
+  max-width: $media-desktop;
+  margin-right: auto;
+  margin-left: auto;
+ 
+
+  @media only screen and (min-width: #{$media-mobile}) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media only screen and (min-width: #{$media-tablet}) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  
+}

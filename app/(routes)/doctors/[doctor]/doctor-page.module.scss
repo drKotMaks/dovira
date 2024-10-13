@@ -1,0 +1,38 @@
+@import '@/app/styles/media';
+@import '@/app/styles/spacing';
+@import '@/app/styles/color';
+@import '@/app/styles/size';
+@import '@/app/styles/template';
+
+.AccoutImage {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    border-radius: $radius-border;
+    min-height: 250px;
+    @media only screen and (min-width: #{$media-mobile}) {
+      flex-direction: row;
+      width: 300px;
+    }
+  }
+  .Image {
+    top: 0px;
+    left: 0px;
+    margin: 0px;
+    //width: 120px;
+    background-repeat: no-repeat;
+    height: auto;
+    background-size: cover;
+    vertical-align: middle;
+    shape-margin: 0.75rem;
+    border-radius: $radius-border-iner;
+    @media only screen and (min-width: #{$media-mobile}) {
+      flex-direction: row;
+      display: block;
+      align-content: center;
+    }
+    max-width: 100%;
+    max-height: 100%;
+  }
+  

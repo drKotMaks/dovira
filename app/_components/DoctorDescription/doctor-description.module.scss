@@ -1,0 +1,127 @@
+@import '../../styles/media';
+@import '../../styles/spacing';
+@import '../../styles/color';
+@import '../../styles/size';
+@import '../../styles/template';
+
+.root {
+  //max-width: $media-desktop;
+  //min-height: 250px;
+  display: grid;
+  padding: 8px;
+  flex-direction: column;
+  @media only screen and (min-width: #{$media-mobile}) {
+    flex-direction: row;
+    grid-template-columns: 250px 3fr;
+    align-items: stretch;
+    position: relative;
+    grid-auto-flow: row;
+    gap: 8px;
+    border-radius: $radius-border;
+    border: 1px solid $green-dark;
+  }
+
+  @media only screen and (min-width: #{$media-tablet}) {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  gap: 8px 16px;
+  max-width: $media-desktop;
+  grid-auto-flow: row;
+  align-content: start;
+  justify-items: stretch;
+  margin: 4px;
+}
+.AccoutImage {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  border-radius: $radius-border;
+  min-height: 250px;
+  @media only screen and (min-width: #{$media-mobile}) {
+    flex-direction: row;
+    width: 300px;
+  }
+}
+.Image {
+  top: 0px;
+  left: 0px;
+  margin: 0px;
+  //width: 120px;
+  background-repeat: no-repeat;
+  height: auto;
+  background-size: cover;
+  vertical-align: middle;
+  shape-margin: 0.75rem;
+  border-radius: $radius-border-iner;
+  @media only screen and (min-width: #{$media-mobile}) {
+    flex-direction: row;
+    display: block;
+    align-content: center;
+  }
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  gap: 4px;
+}
+
+
+.nameDoctor {
+  display: flex;
+  gap: 8px;
+  font-size: $title-size-h1;
+}
+
+
+
+.adres {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-items: start;
+  gap: 8px;
+}
+.icon {
+  display: flex;
+}
+
+.dosvid {
+  display: flex;
+  align-items: center;
+}
+.itemDesc {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.div1 {
+  justify-content: center;
+  align-content: center;
+  overflow: hidden;
+  position: relative;
+  @media only screen and (min-width: #{$media-mobile}) {
+    flex-direction: row;
+  }
+  @media only screen and (min-width: #{$media-tablet}) {
+    flex-direction: row;
+  }
+}
+.div2 {
+  font-size: 18px;
+}
+
+.div4 {
+  font-size: 18px;
+}
+.div5 {
+  font-size: p8x;
+}
+.doctorLayout {
+  max-width: $media-desktop;
+}

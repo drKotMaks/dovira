@@ -1,0 +1,40 @@
+@import '../../styles/media';
+@import '../../styles/spacing';
+@import '../../styles/color';
+@import '../../styles/size';
+@import '../../styles/template';
+
+.root {
+  display: flex;
+  gap: $gap-8;
+  flex-wrap: wrap;
+}
+
+%flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #45184c;
+  gap: $gap-4;
+  min-width: min-content;
+  padding-right: $padding-main;
+  padding-left: $padding-main;
+  border-radius: $radius-border-iner;
+  align-content: center;
+  min-height: 30px;
+  background-color: #a0d0e5;
+  text-wrap: wrap;
+}
+
+.rating {
+  @extend %flex-center;
+  background-color: #a0d0e5;
+}
+.updated {
+  background-color: #c0fcbb;
+  @extend %flex-center;
+}
+.vacationUntil {
+  background-color: #fcbbbb;
+  @extend %flex-center;
+}

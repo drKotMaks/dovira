@@ -1,0 +1,14 @@
+@import '../../styles/media';
+@import '../../styles/spacing';
+@import '../../styles/color';
+@import '../../styles/size';
+@import '../../styles/template';
+
+.root {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-items: start;
+    gap: 8px;
+  }
+

@@ -1,0 +1,168 @@
+@import '../../styles/media';
+@import '../../styles/spacing';
+@import '../../styles/color';
+@import '../../styles/size';
+@import '../../styles/template';
+
+.root {
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (min-width: #{$media-wide-desktop + 1}) {
+    width: 30rem;
+  }
+}
+.DoctorsList {
+  min-height: 500px;
+}
+.DoctorListBlock {
+  display: grid;
+  //min-height: 400px;
+
+  gap: 8px;
+  justify-content: start;
+  align-content: start;
+  justify-items: stretch;
+  align-items: stretch;
+
+  @media only screen and (min-width: #{$media-mobile}) {
+    grid-template-columns: $grid-template-columns-2;
+    align-items: start;
+  }
+  @media only screen and (min-width: #{$media-tablet}) {
+    grid-template-columns: $grid-template-columns-3;
+  }
+  max-width: $media-desktop;
+  margin: auto;
+  grid-template-columns: $grid-template-columns-1;
+}
+.DoctorItem {
+  display: flex;
+  overflow: hidden;
+  column-gap: 8px;
+  align-items: center;
+  font-weight: 400;
+  justify-content: center;
+  border: 1px solid $green-dark;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  position: relative;
+  row-gap: 8px;
+  border-radius: $radius-border;
+  background-color: $background-grey;
+  cursor: pointer;
+  grid-template-columns: 1fr;
+}
+.ImageDoctor {
+  position: relative;
+  justify-content: end;
+  overflow: hidden;
+  align-content: end;
+  @media only screen and (min-width: #{$media-mobile}) {
+    //height: 100px;
+  }
+  @media only screen and (min-width: #{$media-tablet}) {
+    //height: 120px;
+  }
+  border-radius: $radius-border-iner;
+  display: flex;
+  min-height: 120px;
+  border: 1px solid #7b6969;
+}
+.DoctorDescrition {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 14px;
+  flex-wrap: nowrap;
+  align-content: end;
+  height: 100%;
+  padding: 8px;
+}
+.DoctorName {
+  line-height: 14px;
+}
+.DoctorLastName {
+  align-self: start;
+  letter-spacing: normal;
+  text-transform: none;
+  width: auto;
+  height: auto;
+  display: inline;
+  line-height: 14px;
+  font-weight: 400;
+}
+.DoctorProf {
+  font-weight: 300;
+  display: flex;
+  //align-self: center;
+  font-size: 10px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  border-radius: 12px;
+  gap: 2px;
+  background-position: 0%;
+  background-size: auto;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-origin: padding-box;
+  background-clip: border-box;
+}
+.Image {
+  align-self: start;
+  z-index: 1;
+  display: grid;
+  width: 100%;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+  align-items: stretch;
+  justify-items: stretch;
+}
+.DoctorItemProf {
+  background-color: #fffdef;
+  border-radius: 14px;
+  display: inline-block;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 6px;
+  padding-left: 6px;
+  border: 1px solid #ede7b3;
+  font-weight: 400;
+  color: #a3900f;
+  font-size: 12px;
+}
+.DoctorFullName {
+  display: flex;
+  gap: 8px;
+  font-size: 18px;
+}
+.DoctorTime {
+  min-height: 20px;
+  min-width: 100px;
+  display: none;
+}
+.img {
+  top: 0px;
+  left: 0px;
+  margin: 0px;
+  //width: 120px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  vertical-align: middle;
+  shape-margin: 0.75rem;
+  border-radius: $radius-border-iner;
+  width: 100px;
+  height: 100%;
+}
+.button1 {
+  font-size: $title-size-p;
+  width: 100%;
+  border: $radius-border-iner;
+}
+.div1 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

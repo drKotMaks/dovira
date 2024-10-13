@@ -1,0 +1,107 @@
+@import '../../styles/media';
+@import '../../styles/spacing';
+@import '../../styles/color';
+@import '../../styles/size';
+@import '../../styles/template';
+
+.PriceBlock {
+  /* PriceBlock */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+
+  /* Inside auto layout */
+  padding: 10px;
+}
+.H2 {
+  /* H2 */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 30px;
+  gap: 8px;
+  margin: 0px;
+}
+.PriceItem {
+  /* PriceItem */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  border-radius: 16px;
+  width: 100%;
+  align-items: stretch;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-items: stretch;
+  align-self: center;
+  line-height: 1.5;
+  padding: 4px 8px;
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  border: 1px solid $background-greer-light-border;
+  background: $background-greer-light;
+  margin-top: 4px;
+}
+
+.TitlePriceItem {
+  /* TitlePriceItem */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  padding: 0px;
+  gap: 10px;
+
+  // margin: 0 auto;
+  align-content: center;
+  width: 90%;
+  align-items: center;
+  line-height: 1.1;
+}
+
+.TitlePriceText {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  color: #566552;
+  font-size: 12px;
+}
+.PriceLable {
+  /* PriceLable */
+
+  /* Auto layout */
+  display: block;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 3px 8px;
+  gap: 10px;
+
+  background: #ff4747;
+  border-radius: 14px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+  justify-items: center;
+  font-size: 14px;
+  line-height: 1;
+  flex-wrap: nowrap;
+}
+

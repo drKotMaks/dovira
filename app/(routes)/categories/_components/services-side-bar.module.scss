@@ -1,0 +1,97 @@
+@import './../../../styles/media';
+@import './../../../styles/spacing';
+@import './../../../styles/color';
+@import './../../../styles/spacing';
+@import './../../../styles/template';
+
+
+.root {
+    min-height: 500px;
+    border: 1px solid rgb(142, 142, 142);
+    border-radius: 12px;
+    margin: 5px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    @media (max-width: 768px) {
+        /* Стилі для планшетів та мобільних пристроїв */
+       height: auto;   
+    }
+
+  }
+
+
+  .h2Text {
+    align-self: flex-start;
+    font-size: larger;
+    color: #135843;
+    margin-left: 15px;
+    margin-bottom: 15px;
+  }
+
+
+
+
+
+  .cerviceslist {
+    display: flex;
+    height: 100%;
+    gap: 12px;
+    width: auto;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    flex-direction: row;
+    overflow: hidden;
+    width: 100%;
+    background-color: rgb(23, 82, 82);
+
+  @media only screen and (max-width: #{$media-tablet}) {
+    /* Стилі для планшетів та мобільних пристроїв */
+    white-space: nowrap;
+    flex-direction: column;
+  }
+}
+
+  .servicesListItem {
+    font-size: 14px;
+    font-weight: 300;
+    display: inline-block;
+    border-radius: 14px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    width: auto;
+    align-self: baseline;
+    font-family: 'JetBrains', sans-serif;
+
+    
+
+    &:hover {
+      background-color: #cdffcd;
+      &:active {
+        background-color: #059669;
+        color: antiquewhite;
+      }
+    }
+    border: 1px solid #6d9d8b;;
+    padding-left: 12px;
+    padding-right: 12px;
+    flex-direction: row;
+   
+    color: #135843;
+    white-space: nowrap;
+    //background-color: #a8e623;
+
+    @media only screen and (min-width: #{$media-tablet}) {
+    /* Забороняє тексту переноситися на новий рядок */
+    //background-color: #4b7cd6;
+    white-space: nowrap; /* Забороняє тексту переноситися на новий рядок */
+    overflow: hidden; /* Приховує текст, що не вміщується в контейнер */
+    text-overflow: ellipsis; /* Додає багатокрапку у кінці тексту */
+    }
+  }
+
+  //.h2Text {
+   // align-self: center;
+
+  
+  

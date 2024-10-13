@@ -1,0 +1,61 @@
+.GalleryServices {
+    /* GalleryServices */
+  
+    /* Auto layout */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    gap: 10px;
+    height: 274px;
+    cursor: pointer;
+  
+    /* Inside auto layout */
+    //flex: none;
+    //order: 2;
+    //align-self: stretch;
+    //flex-grow: 0;
+    overflow: hidden;
+  }
+
+  .TitleGalleryServ {
+    /* TitleGalleryServ */
+  
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 30px;
+    gap: 8px;
+  
+    /* Inside auto layout */
+    margin: 0px;
+  }
+  .PhotoGallery {
+    /* PhotoGallery */
+  
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  
+    /* Inside auto layout */
+    height: 220px;
+    width: 100%;
+    //overflow: hidden;
+  }
+
+  .ItemGalleryServices {
+    /* ItemGalleryServices */
+   //user-drag: none;
+    width: 200px;
+    height: 200px;
+  
+    //background: url(photo_2024-05-13_09-54-37.jpg);
+    border-radius: 14px;
+   // -webkit-user-drag: none; /* Для браузерів на основі WebKit (Safari, старі версії Chrome) */
+    /* Для інших браузерів */
+  }
+  

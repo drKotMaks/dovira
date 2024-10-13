@@ -1,0 +1,26 @@
+@import './../../styles/color';
+@import  './../../styles/template';
+@import  './../../styles/size';
+@import  './../../styles/media';
+
+.nameDoctor {
+    //display: block;
+    display: flex;
+    gap: 8px;
+    font-size: $title-size-h2;
+    //line-height: 20px;
+      @media only screen and (min-width: #{$media-mobile}) {
+        
+        font-size: $title-size-h1;
+      }
+
+  }
+  .FirstName {
+  }
+  .lastName {
+  }
+
+  .iconStatus {
+    height: 14px;
+    width: 14px;
+  }

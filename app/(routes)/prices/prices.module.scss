@@ -1,0 +1,9 @@
+@import '../../styles/media';
+
+.pricesLayout {
+    max-width: $media-desktop;
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8px;
+  }

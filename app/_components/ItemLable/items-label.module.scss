@@ -1,0 +1,29 @@
+@import '../../styles/media';
+@import '../../styles/spacing';
+@import '../../styles/color';
+@import '../../styles/size';
+@import '../../styles/template';
+
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  flex-direction: row;
+}
+.item {
+  background-color: #fffdef;
+  border-radius: 14px;
+  display: inline-block;
+  width: fit-content;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-right: 6px;
+  padding-left: 6px;
+  border: 1px solid $color-item-border;
+  font-weight: 400;
+  font-size: 10px;
+  color: $color-item-text;
+  background: $color-item-background;
+  //height: 15px;
+}
+

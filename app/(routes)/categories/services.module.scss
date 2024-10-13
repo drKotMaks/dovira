@@ -1,0 +1,59 @@
+@import './../../styles/media';
+@import './../../styles/spacing';
+@import './../../styles/color';
+@import './../../styles/spacing';
+@import './../../styles/template';
+
+.mainblock {
+  display: grid;
+  width: 100%;
+  min-height: 350px;
+  flex-direction: row;
+  grid-auto-flow: column;
+  grid-template-columns: 1.3fr 3fr;
+  margin-top: 80px;
+  gap: 8px;
+  font-family: 'JetBrains', sans-serif;
+  max-width: 1280px;
+  margin-left: auto;
+    margin-right: auto;
+    position: relative;
+
+    @media only screen and (max-width: #{$media-tablet}) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    grid-column-gap: 8px;
+    grid-row-gap: 0px;
+    grid-auto-rows: auto;
+}
+}
+
+
+.ServSiteBar {
+  //min-height: 500px;
+  border: 1px solid rgb(142, 142, 142);
+  border-radius: 12px;
+  margin: 5px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @media (max-width: 768px) {
+    /* Стилі для планшетів та мобільних пристроїв */
+    overflow: hidden;
+    width: auto;
+
+    
+    
+}
+}
+.ServicesMainBlock {
+  min-height: 350px;
+  border: 1px solid rgb(142, 142, 142);
+  border-radius: 12px;
+  margin: 5px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+}
