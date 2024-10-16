@@ -38,4 +38,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/myapp:${{ github.sha }}
-            docker-compose -f /var/www/docker-compose.yml up -d
+            docker-compose -f /var/www/stomatology/docker-compose.yml up -d 
