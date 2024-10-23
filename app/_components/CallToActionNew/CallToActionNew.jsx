@@ -38,7 +38,7 @@ const CallToActionNew = () => {
                 <div className={styles.BlockRight}>
                     <p className={styles.header1}>Тільки професіонали</p>
                     <div className={styles.divHeader}>
-                        <h4 className={styles.header2}>Лікарі... </h4>
+                        <h4 className={styles.header2}>Лікарі</h4>
                         
 
                     </div>
