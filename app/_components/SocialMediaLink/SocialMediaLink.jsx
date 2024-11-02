@@ -13,7 +13,6 @@ const SocialMediaLink = ({ig, tg, fb}) => {
   return (
     <div className={styles.root}>
         <InstagramButton nickname={ig}/>
-        <TelegramButton nickname={tg} />
         <FacebookButton nickname={fb} />
 
     </div>

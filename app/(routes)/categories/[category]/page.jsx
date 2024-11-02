@@ -28,13 +28,12 @@ function CategoryBy({ params }) {
       console.log(doctors);
       console.log(service.fullDescription?.html);
       console.log('Service Title:', service.titleServicEs);
-      
-       console.log(prices);
+      console.log(prices);
     }
    
     const text = service.fullDescription?.html || '';
     
-    console.log(prices.length);
+    
 
 
    return (
@@ -50,13 +49,14 @@ function CategoryBy({ params }) {
                 image={service.imageServices?.url} // Передача URL зображення
                 updatedAt={service.updatedAt}
             />)}
+
         <Separator />
         {imageArray.length>0&& <GalleryServices images={imageArray} isLoading={isLoading} />}
        
         <Separator />
-        <DoctorItemsServices doctors={doctors} />
+         <DoctorItemsServices doctors={doctors} />
         {isLoading?<SkeletonText/>:<FullText FullText={text} />}
-        <Separator />
+         <Separator />
         {isLoading?<SkeletonText/>:<PriceServices prices={prices}/>}
 
          {/* Додаткові компоненти можна додати тут */}

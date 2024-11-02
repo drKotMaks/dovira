@@ -15,8 +15,7 @@ const DoctorsListNew = () => {
   if (isError) return <p>Error loading data.</p>;
 
 
-  console.log(doctors.lastName)
-  console.log(doctors)
+  
   return (
     <div>
       <TitleH1 text="Наші лікарі"/>
