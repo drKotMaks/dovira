@@ -19,33 +19,35 @@ const CallToActionNew = () => {
             </div>
             <div className={styles.MainBlockInfo}>
                 <div className={styles.BlockLeft}>
-                    <Link href={`/categories/white`}>
+                    
                         <div className={styles.BlockLeftTop}>
                             <p className={styles.headerTopLeft}>
                                 Найновіші технології
                             </p>
                             <div className={styles.divHeader}>
+                            <Link href={`/categories/white`}>
                             <h4 className={styles.header3}>
                                 Сервіси...
-                            </h4>
+                            </h4> </Link>
                             
                             </div>
                         </div>
-                    </Link>
+                   
                     <div className={styles.BlockLeftBottom}>
                         <Button title="Все про вініри"/>
                         
                     </div>
                 </div>
-                <Link href={`/doctors/svasl`}>
+                
                 <div className={styles.BlockRight}>
                     <p className={styles.header1}>Тільки професіонали</p>
                     <div className={styles.divHeader}>
-                    <h4 className={styles.header2}>Лікарі...</h4>
-          
+                    <Link href={`/doctors/svasl`}>
+                        <h4 className={styles.header2}>Лікарі...</h4>
+                    </Link>
                     </div>
                 </div>
-                </Link>
+                
             </div>
         </div>
   );
