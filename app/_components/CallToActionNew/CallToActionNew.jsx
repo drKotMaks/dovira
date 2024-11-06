@@ -12,7 +12,7 @@ const CallToActionNew = () => {
                 <div className={styles.SuperMain}>
                     <div className={styles.TitleMain}>
                     <span className="block mb-3 text-sm text-yellow-600 font-semibold uppercase">{setting.fullTitle}</span>
-                    <h2 className="text-3xl md:text-4xl text-white font-semibold">{setting.description}</h2>
+                    <h2 className="text-3xl md:text-4xl text-white font-semibold">Сучасне лікування зубів без болю в Полтаві</h2>
                     </div>
                     <LinkButton text="Записатися" href="/categories/white" />
                 </div>
