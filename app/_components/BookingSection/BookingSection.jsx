@@ -16,13 +16,13 @@ import LocalItem from '../LocalItem/LocalItem';
 const BookingSection = ({children, params}) => {
   
   
-  
+
   return (
     <Sheet>
     <SheetTrigger asChild>{children}</SheetTrigger>
     <SheetContent className="flex flex-col justify-between">
       <SheetHeader>
-        <SheetTitle>Записатися на прийом:</SheetTitle>
+        <SheetTitle>Записатися на прийом: </SheetTitle>
         <SheetDescription>
           <LoginBlock params={params}/>
         </SheetDescription>
