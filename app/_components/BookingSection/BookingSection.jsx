@@ -15,7 +15,8 @@ import LocalItem from '../LocalItem/LocalItem';
 
 const BookingSection = ({children, params}) => {
   
- 
+  
+  
   return (
     <Sheet>
     <SheetTrigger asChild>{children}</SheetTrigger>
