@@ -51,7 +51,7 @@ export default function LoginBlock({ params }) {
         const formData = {
             service: selectedPrices || " ",
             doctor: doc || null,
-            email: session?.user?.email,
+            email: session?.user?.email || " ",
             numberPhone
         };
         
@@ -89,13 +89,15 @@ export default function LoginBlock({ params }) {
 
     if (status === "unauthenticated") {
         return (
-            <Link href={`/api/auth/signin?callbackUrl=${encodeURIComponent(redirectUrlAfterLogin)}`}>
+            <Link href={`/api/auth/signin?callbackUrl=${encodeURIComponent(redirectUrlAfterLogin)}`}
+                className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+            >
                 Авторизуватися
             </Link>
         );
     }
 
-    if (session) {
+    if (!session) {
         return (
             <form onSubmit={handleSubmit} className="gap-2">
                 <div className="flex gap-4 p-1 bg-[#e6fdf3] rounded-[10px]">

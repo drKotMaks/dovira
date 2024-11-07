@@ -18,7 +18,7 @@ const useScrollConstraints = (containerRef, contentRef, data) => {
     return () => {
       window.removeEventListener("resize", updateConstraints);
     };
-  }, [containerRef, contentRef],[]);
+  }, [containerRef, contentRef, data]);
 
   return constraints;
 };

@@ -22,12 +22,11 @@ const DoctorSinglePage = ({ params }) => {
   if (isError) return <div>Щось пішло не так...</div>;
   
 
-  console.log(doctor)
-  console.log(prices)
+
   
   
   const text = doctor?.fullText?.html
-  console.log(params.doctor)
+
   // Перевірка наявності 
 
 

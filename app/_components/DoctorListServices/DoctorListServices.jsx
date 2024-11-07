@@ -13,7 +13,7 @@ const DoctorListServices = ({doctor}) => {
     <div className={styles.Image}>
         <img
             src={ImageDoctor}
-            alt="sdf"
+            alt={styles.DoctorFullName}
             className={styles.img}
             width="500"
             height="500"
@@ -32,7 +32,7 @@ const DoctorListServices = ({doctor}) => {
                 </div>
             
             </div>
-            <Button  href="/doctors/ruba" title="Записатися"/>
+            <Button  href={`/doctors/${doctor.slugDoctor}`} title="Записатися"/>
             <div className={styles.DoctorTime} />
         </div>
     </div>

@@ -21,7 +21,7 @@
   align-content: space-around;
   display: flex;
   border-radius: $radius-border;
-  height: 300px;
+  //height: 300px;
 }
 .doctorPhoto {
   align-self: start;
@@ -102,7 +102,7 @@
 .NameDoctors {
   padding-top: 2px;
   color: #333333;
-  font-size: $title-size-p;
+  font-size: 15px;
 }
 .iiii {
   overflow: hidden;

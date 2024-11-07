@@ -26,11 +26,6 @@ export default function CategorySideBar() {
     const [error, setError] = useState(null);
     const constraints = useScrollConstraints(containerRef, contentRef, data);
 
-    console.log(constraints)
-    
-   
-
-
 
     useEffect(() => {
         async function fetchData() {
@@ -64,32 +59,26 @@ export default function CategorySideBar() {
         <div className=" relative md:fixed ">
             <h2 className={styles.h2Text}>Послуги клініки🤩:</h2>
             <div ref={containerRef} className={styles.scrollContainer}>
-      <motion.div
-        ref={contentRef}
-        className="flex gap-2 flex-row md:flex-col"
-        drag={isMobile ? "x" : false}
-        
-        dragConstraints={constraints}
-      >
-
-
-
-
-{
-    data.length>0?data.map((serv, index) => (
-        <Link href={`/categories/${serv.slug}`} key={index} className={styles.servicesListItem}>
-            {serv.titleServicEs} 
-                    </Link>
-    )):[1,2,3,4,5,6].map((servScal,index)=>(<Skeleton className="w-[200px] h-[30px] rounded-full" />
-    ))
-} 
-
-                   
-
-
-
+                <motion.div
+                            ref={contentRef}
+                            className="flex gap-2 flex-row md:flex-col"
+                            
+                            drag={isMobile ? "x" : false}
+                            dragConstraints={constraints}
+                        >
+                    {
+                        data.length>0?data.map((serv, index) => (
+                            <Link href={`/categories/${serv.slug}`} 
+                            key={index} 
+                            className={styles.servicesListItem}>
+                                {serv.titleServicEs} 
+                            </Link>
+                        )):[1,2,3,4,5,6].map((servScal,index)=>(<Skeleton 
+                            className="w-[200px] h-[30px] rounded-full" />
+                        ))
+                    } 
                </motion.div>
-               </div>
+            </div>
         </div>
     );
 }
