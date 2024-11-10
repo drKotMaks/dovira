@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "./_components/Header/page";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "@/components/ui/toaster";
-import { setting } from "@/lib/setting";
+import Footer from "./_components/Footer/Footer";
 
 
 
@@ -23,6 +23,7 @@ export default function RootLayout({ children }) {
           <body>
             <Header/>
             {children}
+            <Footer/>
             <Toaster/>
           </body>
       </SessionProvider>
