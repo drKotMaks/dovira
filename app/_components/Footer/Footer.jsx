@@ -53,7 +53,7 @@ return (
       </div>
       <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
       <div className="sm:flex sm:items-center sm:justify-between">
-          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <Link href="#" className="hover:underline">Dovira™</Link>. Всі права захищені.
+          <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <Link href="#" className="hover:underline">Dovira™</Link>. Всі права захищені. Версія: {setting.web_version}
           </span>
           <div className="flex mt-4 sm:justify-center sm:mt-0 items-center">
               <Link href="https://facebook.com/doviramira2" className="text-gray-500 hover:text-gray-900 dark:hover:text-white">

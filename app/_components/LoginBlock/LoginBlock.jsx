@@ -1,9 +1,6 @@
-"use client"
+"use client";
 
-import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { useSubmitForm } from "@/app/hooks/useSubmitForm";
 import DoctorInput from "../doctorInput/doctorInput";
@@ -12,36 +9,37 @@ import useStore from "@/app/store/store";
 import PriceItemCart from "../PriceItemCart/PriceItemCart";
 import { InputPhone } from "../InputPhone/InputPhone";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 
 export default function LoginBlock({ params }) {
-    const { data: session, status } = useSession();
     const [service, setService] = useState(""); 
     const { toast } = useToast();
     const { doctor: doc, numberPhone } = useDoctorStore();
     const { selectedPrices } = useStore();
     const [error, setError] = useState(""); // Додаємо стан для перевірки помилок телефону
-
-    useEffect(() => {
-        if (session) {
-            localStorage.setItem("redirectAfterLogout", window.location.href);
-            localStorage.removeItem("redirectAfterLogin");
-        } else {
-            localStorage.setItem("redirectAfterLogin", window.location.href);
-        }
-    }, [session]);
-
-    const redirectUrlAfterLogin = typeof window !== "undefined" ? localStorage.getItem("redirectAfterLogin") || "/" : "/";
-    const redirectUrlAfterLogout = typeof window !== "undefined" ? localStorage.getItem("redirectAfterLogout") || "/" : "/";
+    const [lastSubmitTime, setLastSubmitTime] = useState(null); // Зберігаємо час останньої відправки форми
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        const currentTime = new Date().getTime(); // Поточний час
+
+        // Перевіряємо час від останньої відправки
+        if (lastSubmitTime && currentTime - lastSubmitTime < 60000) { // Якщо пройшло менше 1 хвилини
+            toast({
+                title: "Зачекайте хвилину",
+                description: "Ви можете відправити форму не частіше, ніж раз на хвилину.",
+                variant: "destructive"
+            });
+            return;
+        }
 
         // Перевіряємо чи є помилка номера телефону
         if (numberPhone.replace(/\D/g, "").length !== 12) {
             toast({
                 title: "Будь ласка, введіть повний номер телефону",
                 description: error.message,
-                
             });
             return;
         } else {
@@ -51,10 +49,10 @@ export default function LoginBlock({ params }) {
         const formData = {
             service: selectedPrices || " ",
             doctor: doc || null,
-            email: session?.user?.email || " ",
+            email: "user@example.com", // Можна замінити на вхідний email, якщо потрібно
             numberPhone
         };
-        
+
         try {
             const response = await fetch('/api/sendEmail', {
                 method: 'POST',
@@ -71,6 +69,7 @@ export default function LoginBlock({ params }) {
                     className: "bg-blue-500 text-white"
                 });
                 setService("");
+                setLastSubmitTime(currentTime); // Оновлюємо час останньої відправки
             } else {
                 throw new Error("Помилка");
             }
@@ -83,58 +82,35 @@ export default function LoginBlock({ params }) {
         }
     };
 
-    if (status === "loading") {
-        return null;
-    }
-
-    if (status === "unauthenticated") {
-        return (
-            <Link href={`/api/auth/signin?callbackUrl=${encodeURIComponent(redirectUrlAfterLogin)}`}
-                className="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-            >
-                Авторизуватися
-            </Link>
-        );
-    }
-
-    if (!session) {
-        return (
-            <form onSubmit={handleSubmit} className="gap-2">
-                <div className="flex gap-4 p-1 bg-[#e6fdf3] rounded-[10px]">
-                    <Avatar>
-                        <AvatarImage src={session?.user?.image} />
-                        <AvatarFallback>{session?.user?.name?.charAt(0)}</AvatarFallback>
-                    </Avatar>
-                    <p>Вітаємо, {session?.user?.name}</p>
+    return (
+        <form onSubmit={handleSubmit} className="gap-2">
+            <div className="flex gap-4 p-1 bg-[#e6fdf3] rounded-[10px]">
+                <Avatar>
+                    <AvatarImage src="/default-avatar.png" />
+                    <AvatarFallback>Л</AvatarFallback>
+                </Avatar>
+                <p>Вітаємо, користувач!</p>
+            </div>
+            <div className="gap-2 mt-5 flex flex-col">
+                <div className=" gap-2">
+                    {doc && <span className="font-bold">Лікар:</span>}
+                    <DoctorInput params={params} />
                 </div>
-                <div className="gap-2 mt-5 flex flex-col">
-                    <div className=" gap-2">
-                      {doc&&<span className="font-bold">Лікар:</span>}
-                        <DoctorInput params={params} />
+                {selectedPrices.length > 0 && (
+                    <div className="gap-2">
+                        <span className="font-bold">Обрані послуги:</span>
+                        {selectedPrices.map((price, index) => (
+                            <PriceItemCart key={index} price={price} />
+                        ))}
                     </div>
-                    {selectedPrices.length > 0 && (
-                        <div className="gap-2">
-                            <span className="font-bold">Обрані послуги:</span>
-                            {selectedPrices.map((price, index) => (
-                                <PriceItemCart key={index} price={price} />
-                            ))}
-                        </div>
-                    )}
-
-
-                        <span className="font-bold">Введіть номер телефону:</span>
-                   
-                    <InputPhone />
-                    
-                </div>
-                {error && <p style={{ color: "red" }}>{error}</p>}
-                <Button type="submit" className="btn-primary mt-4">
-                    Відправити
-                </Button>
-               
-            </form>
-        );
-    }
-
-    return null;
+                )}
+                <span className="font-bold">Введіть номер телефону:</span>
+                <InputPhone />
+            </div>
+            {error && <p style={{ color: "red" }}>{error}</p>}
+            <Button type="submit" className="btn-primary mt-4">
+                Відправити
+            </Button>
+        </form>
+    );
 }
