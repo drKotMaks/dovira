@@ -10,10 +10,7 @@ import Footer from "./_components/Footer/Footer";
 const inter = JetBrains_Mono({ subsets: ["cyrillic"] });
 
 
-export const metadata = {
-  title: "Стоматологічна клініка Довіра",
-  description: "Стоматологія в Полтаві",
-};
+
 
 export default function RootLayout({ children }) {
   return (
