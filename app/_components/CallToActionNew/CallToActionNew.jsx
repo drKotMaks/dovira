@@ -12,7 +12,7 @@ const CallToActionNew = () => {
                 <div className={styles.SuperMain}>
                     <div className={styles.TitleMain}>
                     <span className="block mb-3 text-sm text-yellow-600 font-semibold uppercase">{setting.fullTitle}</span>
-                    <h2 className="text-3xl md:text-4xl text-white font-semibold">Сучасне лікування зубів без болю в Полтаві</h2>
+                    <h2 className="text-3xl md:text-4xl text-white font-semibold">{setting.h2}</h2>
                     </div>
                     <LinkButton text="Записатися" href="/categories/white" />
                 </div>
@@ -22,28 +22,28 @@ const CallToActionNew = () => {
                     
                         <div className={styles.BlockLeftTop}>
                             <p className={styles.headerTopLeft}>
-                                Найновіші технології
+                                {setting.button_2}
                             </p>
                             <div className={styles.divHeader}>
                             <Link href={`/categories/white`}>
                             <h4 className={styles.header3}>
-                                Сервіси...
+                                {setting.button_1}
                             </h4> </Link>
                             
                             </div>
                         </div>
                    
                     <div className={styles.BlockLeftBottom}>
-                        <Button title="Все про вініри"/>
+                        <Button title={setting.button_title}/>
                         
                     </div>
                 </div>
                 
                 <div className={styles.BlockRight}>
-                    <p className={styles.header1}>Тільки професіонали</p>
+                    <p className={styles.header1}>{setting.button_4}</p>
                     <div className={styles.divHeader}>
                     <Link href={`/doctors/svasl`}>
-                        <h4 className={styles.header2}>Лікарі...</h4>
+                        <h4 className={styles.header2}>{setting.button_3}</h4>
                     </Link>
                     </div>
                 </div>
