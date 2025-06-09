@@ -10,6 +10,7 @@ import PriceItemCart from "../PriceItemCart/PriceItemCart";
 import { InputPhone } from "../InputPhone/InputPhone";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { setting } from "@/lib/setting";
 
 
 export default function LoginBlock({ params }) {
@@ -49,7 +50,7 @@ export default function LoginBlock({ params }) {
         const formData = {
             service: selectedPrices || " ",
             doctor: doc || null,
-            email: "user@example.com", // Можна замінити на вхідний email, якщо потрібно
+            email: setting.email, // Можна замінити на вхідний email, якщо потрібно
             numberPhone
         };
 

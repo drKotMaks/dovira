@@ -14,14 +14,14 @@
   
   .OldCost {
     padding: 0px;
-    text-decoration-line: line-through;
-    color: #a6a6a6;
+    // text-decoration-line: line-through;
+    color: #252525;
     font-size: $title-size-p;
   }
   .NewCost {
     padding: 0px;
-    font-weight: 600;
-    font-size: $title-size-h4;
+    // font-weight: 600;
+    font-size: $title-size-p;
   }
 
   .tooltip {
