@@ -19,6 +19,7 @@ function layout ({children}) {
         
         <div className={styles.mainblock}>
 
+ 
             <div className={styles.ServSiteBar}>
                 
                 <CategorySideBar/>

@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './doctor-layout.module.scss';
+import { setting } from '@/lib/setting';
+
 
 
 

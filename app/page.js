@@ -6,8 +6,6 @@ import  {setting} from "@/lib/setting";
 
 
 
-
-
 export const metadata = {
   title: {
     default: setting.fullTitle,

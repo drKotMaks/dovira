@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from 'react';
 import styles from './doctor-description.module.scss';
 import DoctorName from '../DoctorName/DoctorName';

@@ -136,6 +136,22 @@
   }
 }`;
       }
+
+
+export const getPriceForCategory = (params) => { 
+        return `query getPriceForCategory {
+  servicEs(where: {slug: "${params}"}) {
+    id
+  }
+  pricEs {
+    actionPrice
+    costNew
+    id
+    titlE
+  }
+}`;
+      }
+      
       
 
 

@@ -1,61 +1,49 @@
-'use client'
-
-import styles from './doctor-page.module.scss';
-import SocialMediaLink from '@/app/_components/SocialMediaLink/SocialMediaLink';
 import { getAllInfoDoctor } from '@/app/_services/graphQL_custom/QueryGraphQL';
-import { Separator } from "@/components/ui/separator";
-import LocalItem from '@/app/_components/LocalItem/LocalItem';
+import { fetcher } from '@/app/_services/fetcher';
 import DoctorDescription from '@/app/_components/DoctorDescription/DoctorDescription';
-import useDoctor from '@/app/hooks/useDoctor';
-import SkeletonBlock from '@/app/_components/SkeletonCustom/SkeletonBlock';
-import SkeletonText from '@/app/_components/SkeletonCustom/SkeletonText';
 import FullText from '@/app/_components/FullText/FullText';
-import PricesBlock from '@/app/_components/PricesBlock/PricesBlock';
+import dynamic from 'next/dynamic';
 import { setting } from '@/lib/setting';
 
-const DoctorSinglePage = ({ params }) => {
+// Динамічний імпорт клієнтського компоненту
+const PricesBlockClient = dynamic(() => import('@/app/_components/PricesBlock/PricesBlockClient'), { ssr: false });
 
-  // Використовуйте правильний параметр
+export async function generateMetadata({ params }) {
   const query = getAllInfoDoctor(params.doctor);
-  const { doctor, isError, isLoading, prices, majors} = useDoctor(query)
- 
+  const data = await fetcher(query);
+  const doctor = data?.doctoRs?.[0];
 
-  if (isError) return <div>Щось пішло не так...</div>;
-  
+  return {
+    title: `${doctor?.nameDoctor ?? ''} ${doctor?.lastName ?? ''} | ${setting.fullTitle ?? ''}`,
+    description: doctor?.description ?? '',
+    openGraph: {
+      title: `${doctor?.nameDoctor ?? ''} ${doctor?.lastName ?? ''}`,
+      description: doctor?.description ?? '',
+      images: [doctor?.imageDoctor?.url ?? ''],
+      url: `${setting.url}doctors/${params.doctor}`,
+      type: 'website',
+    },
+    alternates: {
+      canonical: `${setting.url}doctors/${params.doctor}`,
+    },
+  };
+}
 
+export default async function DoctorSinglePage({ params }) {
+  const query = getAllInfoDoctor(params.doctor);
+  const data = await fetcher(query);
+  const doctor = data?.doctoRs?.[0];
+  const text = doctor?.fullText?.html;
+  const majors = doctor?.majorSpecialy || [];
 
-  
-  
-  const text = doctor?.fullText?.html
-
-  // Перевірка наявності 
-
-
-
+  if (!doctor) return <div>Лікаря не знайдено</div>;
 
   return (
-    <>
-
-    <title>{doctor?.nameDoctor + " " + doctor?.lastName + ' | '+ setting.fullTitle|| ''}</title>
-    <meta name="description" content={doctor?.description || ''} />
-    <meta property="og:title" content={doctor?.nameDoctor + " " + doctor?.lastName || ''} />
-    <meta property="og:description" content={doctor?.description || ''} />
-    <meta property="og:image" content={doctor?.image?.url || ''} />     
-<meta property="og:type" content="website" />
-    <meta property="og:url" content={`${setting.url}doctors/${params.doctor}`} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={doctor?.name || ''} />
-    <meta name="twitter:description" content={doctor?.description || ''} />
-    <meta name="twitter:image" content={doctor?.image?.url || ''} />
-    <link rel="canonical" href={`${setting.url}doctors/${params.doctor}`} />
-   
-      {isLoading?(<SkeletonBlock/>):<DoctorDescription params={params.doctor} doctor={doctor} majors={majors} isLoading={isLoading} />}
-      {isLoading?(<SkeletonText/>):<FullText FullText={text} isLoading={isLoading}  />}
-      {isLoading?(<SkeletonText/>):<PricesBlock prices={prices} /> }
-      
-
-    </>
+    <div>
+      <DoctorDescription doctor={doctor} majors={majors} params={params.doctor} />
+      <FullText FullText={text} />
+      {/* PricesBlockClient завантажується окремо на клієнті */}
+      <PricesBlockClient doctorId={params.doctor} />
+    </div>
   );
-};
-
-export default DoctorSinglePage;
+}

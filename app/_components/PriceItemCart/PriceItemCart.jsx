@@ -30,7 +30,7 @@ const PriceItemCart = ({ price }) => {
 
             <div className={styles.Cost}>
       
-      <div className={styles.NewCost}>{price.costNew}</div>
+      
     </div>
         
 
