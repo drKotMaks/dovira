@@ -20,6 +20,7 @@ export default function LoginBlock({ params }) {
     const { selectedPrices } = useStore();
     const [error, setError] = useState(""); // Додаємо стан для перевірки помилок телефону
     const [lastSubmitTime, setLastSubmitTime] = useState(null); // Зберігаємо час останньої відправки форми
+    const [ isLoading, setIsLoading ] = useState(false); // Додаємо стан для індикатора завантаження
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -27,7 +28,7 @@ export default function LoginBlock({ params }) {
         const currentTime = new Date().getTime(); // Поточний час
 
         // Перевіряємо час від останньої відправки
-        if (lastSubmitTime && currentTime - lastSubmitTime < 60000) { // Якщо пройшло менше 1 хвилини
+        if (lastSubmitTime && currentTime - lastSubmitTime < 6000) { // Якщо пройшло менше 1 хвилини
             toast({
                 title: "Зачекайте хвилину",
                 description: "Ви можете відправити форму не частіше, ніж раз на хвилину.",
@@ -37,24 +38,25 @@ export default function LoginBlock({ params }) {
         }
 
         // Перевіряємо чи є помилка номера телефону
-        if (numberPhone.replace(/\D/g, "").length !== 12) {
-            toast({
-                title: "Будь ласка, введіть повний номер телефону",
-                description: error.message,
-            });
-            return;
-        } else {
-            setError(""); // Видаляємо помилку, якщо все добре
-        }
+            if (numberPhone.replace(/\D/g, "").length !== 12) {
+                toast({
+                    title: "Будь ласка, введіть повний номер телефону",
+                    description: error.message,
+                });
+                return;
+            } else {
+                setError(""); // Видаляємо помилку, якщо все добре
+            }
 
-        const formData = {
-            service: selectedPrices || " ",
-            doctor: doc || null,
-            email: setting.email, // Можна замінити на вхідний email, якщо потрібно
-            numberPhone
-        };
+            const formData = {
+                service: selectedPrices || " ",
+                doctor: doc || null,
+                email: setting.email, // Можна замінити на вхідний email, якщо потрібно
+                numberPhone
+            };
 
         try {
+            setIsLoading(true); // 👈 показати індикатор
             const response = await fetch('/api/sendEmail', {
                 method: 'POST',
                 headers: {
@@ -63,34 +65,48 @@ export default function LoginBlock({ params }) {
                 body: JSON.stringify(formData),
             });
 
+            const data = await response.json();
+
+            
+
             if (response.ok) {
-                toast({
-                    title: "Вітаємо!",
-                    description: "Форма відправлена успішно!",
-                    className: "bg-blue-500 text-white"
-                });
-                setService("");
-                setLastSubmitTime(currentTime); // Оновлюємо час останньої відправки
-            } else {
-                throw new Error("Помилка");
-            }
-        } catch (error) {
-            toast({
-                title: "Щось пішло не так. Спробуйте ще",
-                description: error.message,
-                variant: "success"
-            });
-        }
-    };
+                    console.log("Відправка даних в n8n? route:", data); 
+                    // Перевіряємо, чи є дані у відповіді
+                    const message = Array.isArray(data) ? data[0]?.output : data?.message?.output;
+                    //console.log("full", message);
+
+
+                    toast({
+                            title: "Чекайте за дзвінок від адміністратора",
+                            description: message,
+                            className: "bg-blue-500 text-white",
+                            duration: 60000, 
+            
+                        });
+                        setService("");
+                        setLastSubmitTime(currentTime); // Оновлюємо час останньої відправки
+                    } else {
+                        throw new Error("Помилка");
+                    }
+                    } catch (error) {
+                        toast({
+                            title: "Щось пішло не так. Спробуйте ще",
+                            description: error.message,
+                            variant: "success"
+                        });
+                    } finally {
+                        setIsLoading(false); // 👈 сховати індикатор
+                    }
+                };
 
     return (
         <form onSubmit={handleSubmit} className="gap-2">
             <div className="flex gap-4 p-1 bg-[#e6fdf3] rounded-[10px]">
                 <Avatar>
                     <AvatarImage src="/default-avatar.png" />
-                    <AvatarFallback>Л</AvatarFallback>
+                    <AvatarFallback>D</AvatarFallback>
                 </Avatar>
-                <p>Вітаємо, користувач!</p>
+                <p>Відправте запит, AI знайде для вас ідеальний варіант</p>
             </div>
             <div className="gap-2 mt-5 flex flex-col">
                 <div className=" gap-2">
@@ -109,9 +125,9 @@ export default function LoginBlock({ params }) {
                 <InputPhone />
             </div>
             {error && <p style={{ color: "red" }}>{error}</p>}
-            <Button type="submit" className="btn-primary mt-4">
-                Відправити
-            </Button>
+                <Button type="submit" className="btn-primary mt-4" disabled={isLoading}>
+                        {isLoading ? "AI шукає вільний час... ~ 10 сек" : "Відправити..."}
+                </Button>
         </form>
     );
 }

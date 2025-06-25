@@ -1,8 +1,6 @@
 //import classNames from 'classnames';
 import styles from './description-block.module.scss';
 import Image from 'next/image';
-import { Rating } from '@mui/material';
-import ItemLable from '@/app/_components/ItemLable/ItemLable';
 import InfoDate from '@/app/_components/InfoDate/InfoDate';
 import ButtonAction from '@/app/_components/Button/ButtonAction/ButtonAction';
 

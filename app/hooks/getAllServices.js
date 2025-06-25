@@ -4,7 +4,7 @@ import { getServicesData } from "../_services/graphQL_custom/QueryGraphQL";
 
 export default function getAllServices() {
     const { data, error, isLoading } = useSWR(getServicesData, fetcher);
-    console.log(data)
+    //console.log(data)
     return {
         services: data?.servicEss || [],
         isError: !!error,

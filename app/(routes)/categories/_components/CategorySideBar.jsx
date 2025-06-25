@@ -56,7 +56,7 @@ export default function CategorySideBar() {
 
 
     return (
-        <div className=" relative md:fixed ">
+        <div className=" relative  ">
             <h2 className={styles.h2Text}>Послуги клініки🤩:</h2>
             <div ref={containerRef} className={styles.scrollContainer}>
                 <motion.div

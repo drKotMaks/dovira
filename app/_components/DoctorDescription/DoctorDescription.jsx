@@ -8,7 +8,7 @@ import LocalItem from '../LocalItem/LocalItem';
 import { Skeleton } from '@/components/ui/skeleton';
 import InfoDate from '../InfoDate/InfoDate';
 import ButtonAction from '../Button/ButtonAction/ButtonAction';
-import {setting} from '@/lib/setting';
+//import {setting} from '@/lib/setting';
 
 const DoctorDescription = ({ doctor, majors, params }) => {
   const [imageLoaded, setImageLoaded] = useState(false);

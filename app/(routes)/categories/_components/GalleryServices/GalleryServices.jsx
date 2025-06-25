@@ -4,14 +4,12 @@ import Image from 'next/image';
 import styles from './gallery-services.module.scss';
 import { useRef } from "react";
 import { motion } from "framer-motion";
-//import useIsMobile from "@/app/hooks/useIsMobile";
 import useScrollConstraints from "@/app/hooks/useScrollConstraints";
 import { Skeleton } from '@/components/ui/skeleton';
 export const GalleryServices = ({ images, isLoading }) => {
 
     const containerRef = useRef(null);
     const contentRef = useRef(null);
-    //const isMobile = useIsMobile();
     const data = [1, 2, 3];
     const constraints = useScrollConstraints(containerRef, contentRef, data);
     

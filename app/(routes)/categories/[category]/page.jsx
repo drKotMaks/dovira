@@ -50,7 +50,7 @@ export default async function CategoryPage({ params }) {
 
   const text = service.fullDescription?.html || '';
   const imageArray = service.multiImageServices?.map(img => img.url) || [];
-console.log(params.category)
+// console.log(params.category)
   return (
     <div className="flex flex-col gap-6">
       <TitleH1 text={service.titleServicEs} />
