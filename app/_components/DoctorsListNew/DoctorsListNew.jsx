@@ -19,20 +19,21 @@ const DoctorsListNew = () => {
   return (
     <div>
       <TitleH1 text="Наші лікарі"/>
-    <div className={styles.grid}>
-      {doctors.map((doctor, index) => (
-        <DoctorsItemList 
-          key={index}
-          isLoading={isLoading}
-          ImageAlt={doctor.lastName}
-          ImageSrc={doctor.imageDoctor?.url}
-          name={doctor.nameDoctor}
-          lastName={doctor.lastName}
-          lableArrow={doctor.majorSpecialy} // Можливо, варто показувати спеціальності тут?
-          slug={doctor.slugDoctor}
-        />
-      ))}
-    </div></div>
+        <div className={styles.grid}>
+          {doctors.map((doctor, index) => (
+            <DoctorsItemList 
+              key={index}
+              isLoading={isLoading}
+              ImageAlt={doctor.lastName}
+              ImageSrc={doctor.imageDoctor?.url}
+              name={doctor.nameDoctor}
+              lastName={doctor.lastName}
+              lableArrow={doctor.majorSpecialy} // Можливо, варто показувати спеціальності тут?
+              slug={doctor.slugDoctor}
+            />
+          ))}
+        </div>
+    </div>
   );
 };
 

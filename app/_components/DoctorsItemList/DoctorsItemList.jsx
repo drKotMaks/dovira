@@ -5,7 +5,7 @@ import Button from '../Button/Button';
 
 const DoctorsItemList = ({ ImageSrc, ImageAlt, name, lastName, lableArrow, slug, isLoading }) => {
 
-console.log(slug)
+//console.log(slug)
 
     const lables = lableArrow.slice(0, 5);
   return (

@@ -1,8 +1,13 @@
 import TitleH1 from '@/app/_components/Typography/TitleH1';
+import { metadata } from '@/app/page';
 import { setting } from '@/lib/setting';
 import React from 'react';
 
+
+
 const Confidence = () => {
+
+    
  
  return (
     <div>
